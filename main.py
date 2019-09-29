@@ -1,20 +1,9 @@
-# Python 2.x program for Speech Recognition
 import speech_recognition as sr
-from gtts import gTTS
-from playsound import playsound
+from Synthesizer import tts, media
 
 enabled = False
 
-
-def tts(text_file, lang, name_file):
-    with open(text_file, "r") as file:
-        text = file.read()
-    file = gTTS(text=text, lang=lang)
-    filename = name_file
-    file.save(filename)
-
-
-# Archivo de salida
+# file
 f = open("sample.txt", "w")
 
 # Sample rate is how often values are recorded
@@ -61,6 +50,7 @@ with sr.Microphone(device_index=device_id, sample_rate=sample_rate,
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
 f.close()
+
 if enabled:
     tts("sample.txt", "ES", "sample.wav")
-    playsound("sample.wav")
+    media("sample.wav")
