@@ -2,7 +2,6 @@ import speech_recognition as sr
 
 
 def initRecognition():
-
     # file
     f = open("sample.txt", "w")
 
